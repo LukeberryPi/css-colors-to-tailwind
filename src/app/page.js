@@ -6,19 +6,19 @@ export default function Home() {
   const generatedTailwindConfigObject = undefined;
 
   return (
-    <div className="flex justify-center flex-col p-4 bg-fuchsia-200">
+    <div className="flex justify-center flex-col p-4">
       <h1 className="text-4xl text-center">
         Get your vanilla CSS color variables into TailwindCSS
       </h1>
-      <div className="flex flex-col gap-6 my-8">
+      <div className="flex flex-col lg:flex-row gap-6 my-8">
         <textarea
           placeholder={cssRootExample}
           className="border shadow-md rounded py-1 px-2 placeholder:text-zinc-400 min-h-[120px]"
         />
-        <button className="group bg-berryBlue transition-colors flex gap-2 w-fit mx-auto px-3 rounded py-1 hover:bg-berryBlue/80">
+        <button className="group lg:h-10 items-center bg-berryBlue transition-colors flex gap-2 w-fit mx-auto px-3 rounded py-1 hover:bg-berryBlue/80">
           CONVERT
-          <span className="group-hover:rotate-180 transition-transform duration-300">
-            ↑
+          <span className="lg:-rotate-90 lg:group-hover:rotate-270 group-hover:rotate-360 transition-transform duration-500">
+            ↓
           </span>
         </button>
         <div
@@ -30,15 +30,15 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <main className="flex flex-col gap-10">
+      <main className="flex flex-col gap-10 max-w-prose mx-auto">
         <article className="flex flex-col gap-6">
           <h2 className="text-center text-3xl">What does this site do?</h2>
           <section>
             <p>
               It receives a{" "}
               <span className="font-mono bg-zinc-200 rounded px-1">:root</span>{" "}
-              CSS object and converts it into a copy-pasteable JavaScript object you
-              can plug into{" "}
+              CSS object and converts it into a copy-pasteable JavaScript object
+              you can plug into{" "}
               <span className="font-mono bg-zinc-200 rounded px-1">
                 tailwind.config.js
               </span>
@@ -95,6 +95,7 @@ export default function Home() {
             >
               TailwindCSS&apos; documentation
             </a>
+            .
           </p>
         </article>
       </main>

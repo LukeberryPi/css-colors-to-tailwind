@@ -6,7 +6,7 @@ export default function Home() {
   const generatedTailwindConfigObject = undefined;
 
   return (
-    <div className="flex justify-center flex-col p-4">
+    <div className="flex justify-center flex-col p-4 bg-fuchsia-200">
       <h1 className="text-4xl text-center">
         Get your vanilla CSS color variables into TailwindCSS
       </h1>

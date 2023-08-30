@@ -25,7 +25,7 @@ export default function Home() {
           contentEditable={generatedTailwindConfigObject}
           className="border rounded shadow-md py-1 px-2 min-h-[120px] relative text-black"
         >
-          <button className="absolute rounded border border-zinc-200 px-2 py-1 hover:bg-zinc-200 hover:border-zinc-400 transition-colors bottom-2 right-3">
+          <button className="absolute rounded border border-zinc-200 px-2 py-1 hover:bg-zinc-200 hover:border-zinc-400 transition-colors bottom-2 right-2">
             Copy result
           </button>
         </div>
@@ -71,7 +71,7 @@ export default function Home() {
           </section>
           <section className="flex flex-col gap-2">
             <p className="font-semibold text-lg">
-              If you want to use STRICTLY the colors I generated above
+              If you want to use STRICTLY the colors generated above
             </p>
             <p>
               Add the generated object to the{" "}

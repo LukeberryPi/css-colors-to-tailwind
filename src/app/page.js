@@ -1,45 +1,45 @@
 export default function Home() {
   const cssRootExample = `:root {
       --berry-blue: #79CBE3;
-      --navy-dark: #00151f;
+      --other-color: #000000;
   }`;
   const generatedTailwindConfigObject = undefined;
 
   return (
-    <div className="flex justify-center flex-col p-4">
-      <h1 className="text-4xl text-center">
+    <div className="flex flex-col justify-center p-4">
+      <h1 className="text-center text-4xl">
         Get your vanilla CSS color variables into TailwindCSS
       </h1>
-      <div className="flex flex-col lg:flex-row gap-6 my-8">
+      <div className="my-8 flex flex-col justify-center gap-6 lg:flex-row">
         <textarea
           placeholder={cssRootExample}
-          className="border shadow-md rounded py-1 px-2 placeholder:text-zinc-400 min-h-[120px]"
+          className="min-h-[120px] rounded border px-2 py-1 shadow-md placeholder:text-zinc-400"
         />
-        <button className="group lg:h-10 items-center bg-berryBlue transition-colors flex gap-2 w-fit mx-auto px-3 rounded py-1 hover:bg-berryBlue/80">
+        <button className="group mx-auto flex w-fit items-center gap-2 rounded bg-berryBlue px-3 py-1 transition-colors hover:bg-berryBlue/80 lg:h-10">
           CONVERT
-          <span className="lg:-rotate-90 lg:group-hover:rotate-270 group-hover:rotate-360 transition-transform duration-500">
+          <span className="transition-transform duration-500 group-hover:rotate-360 lg:-rotate-90 lg:group-hover:rotate-270">
             ↓
           </span>
         </button>
         <div
           contentEditable={generatedTailwindConfigObject}
-          className="border rounded shadow-md py-1 px-2 min-h-[120px] relative text-black"
+          className="relative min-h-[120px] rounded border px-2 py-1 text-black shadow-md"
         >
-          <button className="absolute rounded border border-zinc-200 px-2 py-1 hover:bg-zinc-200 hover:border-zinc-400 transition-colors bottom-2 right-2">
+          <button className="absolute bottom-2 right-2 rounded border border-zinc-200 px-2 py-1 transition-colors hover:border-zinc-400 hover:bg-zinc-200">
             Copy result
           </button>
         </div>
       </div>
-      <main className="flex flex-col gap-10 max-w-prose mx-auto">
+      <main className="mx-auto flex max-w-prose flex-col gap-10">
         <article className="flex flex-col gap-6">
           <h2 className="text-center text-3xl">What does this site do?</h2>
           <section>
             <p>
               It receives a{" "}
-              <span className="font-mono bg-zinc-200 rounded px-1">:root</span>{" "}
+              <span className="rounded bg-zinc-200 px-1 font-mono">:root</span>{" "}
               CSS object and converts it into a copy-pasteable JavaScript object
               you can plug into{" "}
-              <span className="font-mono bg-zinc-200 rounded px-1">
+              <span className="rounded bg-zinc-200 px-1 font-mono">
                 tailwind.config.js
               </span>
               . This allows you to access your color variables in any
@@ -47,22 +47,22 @@ export default function Home() {
             </p>
           </section>
         </article>
-        <article className="flex-col flex gap-6">
+        <article className="flex flex-col gap-6">
           <h2 className="text-center text-3xl">
             I have copied the result. Now what?
           </h2>
           <section className="flex flex-col gap-2">
-            <p className="font-semibold text-lg">
+            <p className="text-lg font-semibold">
               If you want to use the colors generated above AND
               TailwindCSS&apos; default colors
             </p>
             <p>
               Add the generated object to{" "}
-              <span className="bg-zinc-200 rounded px-1">
+              <span className="rounded bg-zinc-200 px-1">
                 theme.extend.colors
               </span>{" "}
               on your{" "}
-              <span className="bg-zinc-200 rounded px-1">
+              <span className="rounded bg-zinc-200 px-1">
                 tailwind.config.js
               </span>
               . This means you can use all your colors, as well as
@@ -70,21 +70,21 @@ export default function Home() {
             </p>
           </section>
           <section className="flex flex-col gap-2">
-            <p className="font-semibold text-lg">
+            <p className="text-lg font-semibold">
               If you want to use STRICTLY the colors generated above
             </p>
             <p>
               Add the generated object to the{" "}
-              <span className="bg-zinc-200 rounded px-1">theme.colors</span> on
+              <span className="rounded bg-zinc-200 px-1">theme.colors</span> on
               your{" "}
-              <span className="bg-zinc-200 rounded px-1">
+              <span className="rounded bg-zinc-200 px-1">
                 tailwind.config.js
               </span>
               . This will override TailwindCSS&apos; default theme. You will
               lose access utilities such as{" "}
-              <span className="bg-zinc-200 rounded px-1">text-gray-900</span>{" "}
+              <span className="rounded bg-zinc-200 px-1">text-gray-900</span>{" "}
               and{" "}
-              <span className="bg-zinc-200 rounded px-1">bg-transparent</span>.
+              <span className="rounded bg-zinc-200 px-1">bg-transparent</span>.
             </p>
           </section>
           <p>
@@ -99,7 +99,7 @@ export default function Home() {
           </p>
         </article>
       </main>
-      <footer className="text-center pt-6 border-t border-zinc-300 mt-8">
+      <footer className="mt-8 border-t border-zinc-300 pt-6 text-center">
         Created by{" "}
         <a
           className="underline underline-offset-2"

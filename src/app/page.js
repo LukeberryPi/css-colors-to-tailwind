@@ -59,7 +59,7 @@ export default function Home() {
             <p>
               Add the generated object to{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
-                theme.extend.colors LLLLLLLLLLLLLLLLLLLLLLLLLLLLA
+                theme.extend.colors
               </span>{" "}
               on your{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">

@@ -58,11 +58,11 @@ export default function Home() {
             </p>
             <p>
               Add the generated object to{" "}
-              <span className="rounded bg-zinc-200 px-1">
+              <span className="rounded bg-zinc-200 px-1 font-mono">
                 theme.extend.colors
               </span>{" "}
               on your{" "}
-              <span className="rounded bg-zinc-200 px-1">
+              <span className="rounded bg-zinc-200 px-1 font-mono">
                 tailwind.config.js
               </span>
               . This means you can use all your colors, as well as
@@ -75,16 +75,16 @@ export default function Home() {
             </p>
             <p>
               Add the generated object to the{" "}
-              <span className="rounded bg-zinc-200 px-1">theme.colors</span> on
+              <span className="rounded bg-zinc-200 px-1 font-mono">theme.colors</span> on
               your{" "}
-              <span className="rounded bg-zinc-200 px-1">
+              <span className="rounded bg-zinc-200 px-1 font-mono">
                 tailwind.config.js
               </span>
               . This will override TailwindCSS&apos; default theme. You will
               lose access utilities such as{" "}
-              <span className="rounded bg-zinc-200 px-1">text-gray-900</span>{" "}
+              <span className="rounded bg-zinc-200 px-1 font-mono">text-gray-900</span>{" "}
               and{" "}
-              <span className="rounded bg-zinc-200 px-1">bg-transparent</span>.
+              <span className="rounded bg-zinc-200 px-1 font-mono">bg-transparent</span>.
             </p>
           </section>
           <p>

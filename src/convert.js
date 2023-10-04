@@ -1,4 +1,4 @@
-function convertCssToJs(cssText) {
+export function convertCssToJs(cssText) {
   const cssObject = {};
 
   const lines = cssText.split("\n");

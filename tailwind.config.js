@@ -7,13 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "400px",
+      },
       colors: {
         berryBlue: "#79CBE3",
       },
-      rotate: {
-        "270": "270deg",
-        "360": "360deg",
-      }
     },
   },
   plugins: [],

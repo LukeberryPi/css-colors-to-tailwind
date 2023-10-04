@@ -1,31 +1,46 @@
+"use client";
+import { useState } from "react";
+import { convertCssToJs } from "@/convert";
+import { copyToClipboard } from "@/clipboard";
+
 export default function Home() {
+  const [cssRoot, setCssRoot] = useState("");
+  const [tailwindConfigObject, setTailwindConfigObject] = useState("");
+
+  const onConvertClick = () => {
+    setTailwindConfigObject(convertCssToJs(cssRoot));
+  };
+
   const cssRootExample = `:root {
       --berry-blue: #79CBE3;
       --other-color: #000000;
   }`;
-  const generatedTailwindConfigObject = undefined;
 
+  const handleTextAreaChange = (event) => {
+    setCssRoot(event.target.value);
+  };
+  
   return (
-    <div className="flex flex-col justify-center p-4">
+    <div className="flex flex-col items-center justify-center p-4">
       <h1 className="text-center text-4xl">
         Get your vanilla CSS color variables into TailwindCSS
       </h1>
-      <div className="my-8 flex flex-col justify-center gap-6 lg:flex-row">
+      <div className="xs:w-[400px] my-8 flex w-[326px] flex-col justify-center gap-8 sm:w-[640px]">
         <textarea
+          value={cssRoot}
+          onChange={handleTextAreaChange}
           placeholder={cssRootExample}
-          className="min-h-[120px] rounded border px-2 py-1 shadow-md placeholder:text-zinc-400"
+          className="h-fit min-h-[120px] w-full rounded border px-2 py-1 shadow-md placeholder:text-zinc-400"
         />
-        <button className="group mx-auto flex w-fit items-center gap-2 rounded bg-berryBlue px-3 py-1 transition-colors hover:bg-berryBlue/80 lg:h-10">
-          CONVERT
-          <span className="transition-transform duration-500 group-hover:rotate-360 lg:-rotate-90 lg:group-hover:rotate-270">
-            ↓
-          </span>
-        </button>
-        <div
-          contentEditable={generatedTailwindConfigObject}
-          className="relative min-h-[120px] rounded border px-2 py-1 text-black shadow-md"
+        <button
+          onClick={onConvertClick}
+          className="group mx-auto flex w-fit items-center gap-2 rounded bg-berryBlue px-3 py-1 ring-1 ring-zinc-300 transition-all hover:ring-zinc-600 active:translate-y-1 lg:h-10"
         >
-          <button className="absolute bottom-2 right-2 rounded border border-zinc-200 px-2 py-1 transition-colors hover:border-zinc-400 hover:bg-zinc-200">
+          CONVERT
+        </button>
+        <div className="relative min-h-[120px] w-full rounded border px-2 py-1 text-black shadow-md">
+          {tailwindConfigObject.toString()}
+          <button onClick={() => copyToClipboard(tailwindConfigObject)} className="absolute bottom-2 right-2 rounded border border-zinc-200 px-2 py-1 transition-all hover:border-zinc-400 hover:bg-zinc-200 active:translate-y-1">
             Copy result
           </button>
         </div>
@@ -75,16 +90,23 @@ export default function Home() {
             </p>
             <p>
               Add the generated object to the{" "}
-              <span className="rounded bg-zinc-200 px-1 font-mono">theme.colors</span> on
-              your{" "}
+              <span className="rounded bg-zinc-200 px-1 font-mono">
+                theme.colors
+              </span>{" "}
+              on your{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
                 tailwind.config.js
               </span>
               . This will override TailwindCSS&apos; default theme. You will
               lose access utilities such as{" "}
-              <span className="rounded bg-zinc-200 px-1 font-mono">text-gray-900</span>{" "}
+              <span className="rounded bg-zinc-200 px-1 font-mono">
+                text-gray-900
+              </span>{" "}
               and{" "}
-              <span className="rounded bg-zinc-200 px-1 font-mono">bg-transparent</span>.
+              <span className="rounded bg-zinc-200 px-1 font-mono">
+                bg-transparent
+              </span>
+              .
             </p>
           </section>
           <p>
@@ -99,7 +121,7 @@ export default function Home() {
           </p>
         </article>
       </main>
-      <footer className="mt-8 border-t border-zinc-300 pt-6 text-center">
+      <footer className="mt-8 border-t border-zinc-300 py-4 text-center">
         Created by{" "}
         <a
           className="underline underline-offset-2"

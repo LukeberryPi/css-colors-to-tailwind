@@ -19,7 +19,7 @@ export default function Home() {
   const handleTextAreaChange = (event) => {
     setCssRoot(event.target.value);
   };
-  
+
   return (
     <div className="flex flex-col items-center justify-center p-4">
       <h1 className="text-center text-4xl">
@@ -39,7 +39,7 @@ export default function Home() {
           CONVERT
         </button>
         <div className="relative min-h-[120px] w-full rounded border px-2 py-1 text-black shadow-md">
-          {tailwindConfigObject.toString()}
+          {tailwindConfigObject}
           <button onClick={() => copyToClipboard(tailwindConfigObject)} className="absolute bottom-2 right-2 rounded border border-zinc-200 px-2 py-1 transition-all hover:border-zinc-400 hover:bg-zinc-200 active:translate-y-1">
             Copy result
           </button>

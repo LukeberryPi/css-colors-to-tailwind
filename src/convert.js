@@ -14,14 +14,5 @@ export function convertCssToJs(cssText) {
     }
   }
 
-  return cssObject;
+  return `colors: ${JSON.stringify(cssObject)}`
 }
-
-const cssText = `:root {
-  --berry-blue: #79CBE3;
-  --navy-dark: #00151f;
-}`;
-
-const colors = convertCssToJs(cssText);
-
-console.error("colors:", colors);

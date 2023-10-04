@@ -3,15 +3,36 @@ import { useState } from "react";
 import { convertCssToJs } from "@/convert";
 import { copyToClipboard } from "@/clipboard";
 
+// TODO: Give feedback on any incorrect input ("Conversion impossible. Please input a css :root object with colors.")
+// TODO: Filter from original object any css variables that are not colors:
+// if user inputs
+// :root {
+//     --berry-blue: #79CBE3;
+//     --other-color: #000000;
+//     --animation-duration: 600;
+// }`
+//
+// we should return colors: { berryBlue: "#79CBE3", otherColor: "#000000" };
+// ignoring any non-color variable. this should be communicated clearly towards the user.
+
 export default function Home() {
   const [cssRoot, setCssRoot] = useState("");
   const [tailwindConfigObject, setTailwindConfigObject] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const onConvertClick = () => {
     setTailwindConfigObject(convertCssToJs(cssRoot));
   };
 
-  const cssRootExample = `:root {
+  const onCopyClick = (text) => {
+    copyToClipboard(text);
+    setCopied(true);
+    setInterval(() => {
+      setCopied(false);
+    }, 3000);
+  };
+
+  const cssRootPlaceholder = `:root {
       --berry-blue: #79CBE3;
       --other-color: #000000;
   }`;
@@ -29,7 +50,7 @@ export default function Home() {
         <textarea
           value={cssRoot}
           onChange={handleTextAreaChange}
-          placeholder={cssRootExample}
+          placeholder={cssRootPlaceholder}
           className="h-fit min-h-[120px] w-full rounded border px-2 py-1 shadow-md placeholder:text-zinc-400"
         />
         <button
@@ -40,8 +61,11 @@ export default function Home() {
         </button>
         <div className="relative min-h-[120px] w-full rounded border px-2 py-1 text-black shadow-md">
           {tailwindConfigObject}
-          <button onClick={() => copyToClipboard(tailwindConfigObject)} className="absolute bottom-2 right-2 rounded border border-zinc-200 px-2 py-1 transition-all hover:border-zinc-400 hover:bg-zinc-200 active:translate-y-1">
-            Copy result
+          <button
+            onClick={() => onCopyClick(tailwindConfigObject)}
+            className="absolute bottom-2 right-2 rounded border border-zinc-200 px-2 py-1 transition-all hover:border-zinc-400 hover:bg-zinc-200 active:translate-y-1"
+          >
+            {copied ? "Copied!" : "Copy result"}
           </button>
         </div>
       </div>
@@ -121,16 +145,15 @@ export default function Home() {
           </p>
         </article>
       </main>
-      <footer className="mt-8 border-t border-zinc-300 py-4 text-center">
+      <footer className="mt-8 py-4 text-center">
         Created by{" "}
         <a
           className="underline underline-offset-2"
+          target="_blank"
           href="https://x.com/LukeberryPi"
         >
           @LukeberryPi
-        </a>{" "}
-        <br />
-        @2023
+        </a>
       </footer>
     </div>
   );

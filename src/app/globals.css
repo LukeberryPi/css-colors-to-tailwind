@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 /* uncomment to debug layout */
-* {
+/* * {
   outline: 1px solid red;
-}
+} */

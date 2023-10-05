@@ -27,15 +27,15 @@ export default function Home() {
   const onCopyClick = (text) => {
     copyToClipboard(text);
     setCopied(true);
-    setInterval(() => {
+    setTimeout(() => {
       setCopied(false);
     }, 3000);
   };
 
   const cssRootPlaceholder = `:root {
-      --berry-blue: #79CBE3;
-      --other-color: #000000;
-  }`;
+  --berry-blue: #79CBE3;
+  --other-color: #000000;
+}`;
 
   const handleTextAreaChange = (event) => {
     setCssRoot(event.target.value);
@@ -46,24 +46,24 @@ export default function Home() {
       <h1 className="text-center text-4xl">
         Get your vanilla CSS color variables into TailwindCSS
       </h1>
-      <div className="xs:w-[400px] my-8 flex w-[326px] flex-col justify-center gap-8 sm:w-[640px]">
+      <div className="xs:w-[400px] my-8 font-mono flex w-[326px] flex-col justify-center gap-8 sm:w-[640px]">
         <textarea
           value={cssRoot}
           onChange={handleTextAreaChange}
           placeholder={cssRootPlaceholder}
-          className="h-fit min-h-[120px] w-full rounded border px-2 py-1 shadow-md placeholder:text-zinc-400"
+          className="h-fit min-h-[120px] w-full rounded border px-4 py-2 shadow-md placeholder:text-zinc-400"
         />
         <button
           onClick={onConvertClick}
           className="group mx-auto flex w-fit items-center gap-2 rounded bg-berryBlue px-3 py-1 ring-1 ring-zinc-300 transition-all hover:ring-zinc-600 active:translate-y-1 lg:h-10"
         >
-          CONVERT
+          Convert 
         </button>
-        <div className="relative min-h-[120px] w-full rounded border px-2 py-1 text-black shadow-md">
-          {tailwindConfigObject}
+        <div className="relative min-h-[120px] w-full rounded border px-4 py-2 text-black shadow-md">
+          {tailwindConfigObject ? tailwindConfigObject : "colors: {}"}
           <button
             onClick={() => onCopyClick(tailwindConfigObject)}
-            className="absolute bottom-2 right-2 rounded border border-zinc-200 px-2 py-1 transition-all hover:border-zinc-400 hover:bg-zinc-200 active:translate-y-1"
+            className="absolute bottom-4 right-4 rounded border border-zinc-200 px-2 py-1 transition-all hover:border-zinc-400 hover:bg-zinc-200 active:translate-y-1"
           >
             {copied ? "Copied!" : "Copy result"}
           </button>
@@ -74,15 +74,15 @@ export default function Home() {
           <h2 className="text-center text-3xl">What does this site do?</h2>
           <section>
             <p>
-              It receives a{" "}
+              It converts a
               <span className="rounded bg-zinc-200 px-1 font-mono">:root</span>{" "}
-              CSS object and converts it into a copy-pasteable JavaScript object
+              CSS object to a copy-pasteable JavaScript object
               you can plug into{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
                 tailwind.config.js
               </span>
               . This allows you to access your color variables in any
-              TailwindCSS project.
+              TailwindCSS project with ease.
             </p>
           </section>
         </article>
@@ -96,9 +96,9 @@ export default function Home() {
               TailwindCSS&apos; default colors
             </p>
             <p>
-              Add the generated object to{" "}
+              Extend your color palette by adding the generated object to{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
-                theme.extend.colors
+                theme.extend
               </span>{" "}
               on your{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
@@ -113,9 +113,9 @@ export default function Home() {
               If you want to use STRICTLY the colors generated above
             </p>
             <p>
-              Add the generated object to the{" "}
+              Overwrite default colors by adding the generated object to the{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
-                theme.colors
+                theme
               </span>{" "}
               on your{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
@@ -124,7 +124,7 @@ export default function Home() {
               . This will override TailwindCSS&apos; default theme. You will
               lose access utilities such as{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
-                text-gray-900
+                text-zinc-800
               </span>{" "}
               and{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
@@ -138,6 +138,7 @@ export default function Home() {
             <a
               className="underline underline-offset-2"
               href="https://tailwindcss.com/docs/theme#customizing-the-default-theme"
+              target="_blank"
             >
               TailwindCSS&apos; documentation
             </a>

@@ -44,9 +44,9 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center p-4">
       <h1 className="text-center text-4xl">
-        Get your vanilla CSS color variables into TailwindCSS
+        Get your vanilla CSS color variables in TailwindCSS
       </h1>
-      <div className="xs:w-[400px] my-8 font-mono flex w-[326px] flex-col justify-center gap-8 sm:w-[640px]">
+      <div className="my-8 flex w-[326px] flex-col justify-center gap-8 font-mono xs:w-[400px] sm:w-[640px]">
         <textarea
           value={cssRoot}
           onChange={handleTextAreaChange}
@@ -57,13 +57,13 @@ export default function Home() {
           onClick={onConvertClick}
           className="group mx-auto flex w-fit items-center gap-2 rounded bg-berryBlue px-3 py-1 ring-1 ring-zinc-300 transition-all hover:ring-zinc-600 active:translate-y-1 lg:h-10"
         >
-          Convert 
+          Convert
         </button>
-        <div className="relative min-h-[120px] w-full rounded border px-4 py-2 text-black shadow-md">
+        <div className="relative min-h-[120px] w-full rounded border px-4 py-3 text-black shadow-md">
           {tailwindConfigObject ? tailwindConfigObject : "colors: {}"}
           <button
             onClick={() => onCopyClick(tailwindConfigObject)}
-            className="absolute bottom-4 right-4 rounded border border-zinc-200 px-2 py-1 transition-all hover:border-zinc-400 hover:bg-zinc-200 active:translate-y-1"
+            className="absolute bottom-4 right-4 rounded border border-zinc-200 px-3 py-2 transition-all hover:border-zinc-400 hover:bg-zinc-200 active:translate-y-1"
           >
             {copied ? "Copied!" : "Copy result"}
           </button>
@@ -74,10 +74,9 @@ export default function Home() {
           <h2 className="text-center text-3xl">What does this site do?</h2>
           <section>
             <p>
-              It converts a
+              It converts a CSS{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">:root</span>{" "}
-              CSS object to a copy-pasteable JavaScript object
-              you can plug into{" "}
+              to a copy-pasteable JavaScript object you can plug into{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
                 tailwind.config.js
               </span>
@@ -114,9 +113,7 @@ export default function Home() {
             </p>
             <p>
               Overwrite default colors by adding the generated object to the{" "}
-              <span className="rounded bg-zinc-200 px-1 font-mono">
-                theme
-              </span>{" "}
+              <span className="rounded bg-zinc-200 px-1 font-mono">theme</span>{" "}
               on your{" "}
               <span className="rounded bg-zinc-200 px-1 font-mono">
                 tailwind.config.js

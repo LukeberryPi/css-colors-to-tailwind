@@ -14,5 +14,5 @@ export function convertCssToJs(cssText) {
     }
   }
 
-  return `colors: ${JSON.stringify(cssObject)}`
+  return `colors: ${JSON.stringify(cssObject)}}`
 }

@@ -14,5 +14,14 @@ export function convertCssToJs(cssText) {
     }
   }
 
-  return `colors: ${JSON.stringify(cssObject)}`
+  const asString =
+    "{ " +
+    Object.keys(cssObject)
+      .reduce((final, property) => {
+        return final.concat(`${property}: "${cssObject[property]}"`);
+      }, [])
+      .join(", ") +
+    " }";
+
+  return `colors: ${asString}`;
 }
